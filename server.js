@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+require("dotenv").config();
 const userRoutes = require("./routes/UserRoutes");
 const mongoose = require("mongoose");
 
@@ -9,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect("mongodb+srv://Vinay:9968393810ab@cluster0.blhljtt.mongodb.net/Netflix?retryWrites=true&w=majority", {
+  .connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
